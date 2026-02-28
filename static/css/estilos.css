@@ -1,0 +1,54 @@
+body {
+  font-family: "Delius", cursive;
+  font-weight: 400;
+  font-style: normal;
+  background-color: blanchedalmond;
+  padding: 0;
+    margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  border: 5px dashed red;
+  
+  background-image: url("../imagenes/index/imagen_principal.PNG");
+    background-size: cover;      /* ocupa todo el header */
+    background-position: center; /* centrada */
+    background-repeat: no-repeat;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5); /* capa semitransparente */
+}
+
+header > * {
+    position: relative; /* para que estén por encima de la capa semitransparente */
+    z-index: 2; /* detrás del contenido del header */
+}
+
+.logo img {
+    border: 5px dashed red;
+    padding: 10px 10px;
+    height: 50px;
+    
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.carrito{
+    border: 5px dashed red;
+    padding: 10px 10px;
+}
+.carrito img{
+    width: 30px;
+}
