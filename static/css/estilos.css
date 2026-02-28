@@ -12,7 +12,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 18px 8%;
-  border: 5px dashed red;
+  /* border: 5px dashed red; */
   
 }
 
@@ -53,3 +53,106 @@ header {
     gap: 50px;
     margin-top: 30px;
 }
+
+.marca_descripcion img {
+    width: 400px;
+    height: auto;
+    margin: 50px;
+}
+
+.productos_destacados {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.productos {
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.contenedor-productos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.producto {
+    width: 200px;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 15px;
+}
+
+.producto img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.precio {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.producto button {
+    padding: 8px 15px;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.producto button:hover {
+    background: orange;
+}
+
+.boton-todos {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.boton-todos a {
+    padding: 10px 20px;
+    background: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.contenedor_productos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+}
+
+.logo_footer img {
+    width: 100px;
+}
+
+.redes_footer img {
+    width: 30px;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.redes_footer img:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+
