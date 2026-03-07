@@ -29,12 +29,20 @@ header {
 }
 
 .carrito{
-    /*border: 5px dashed red;*/
-    padding: 10px 10px;
+    /* border: 5px dashed red; */
+    padding: 10px;
 }
+
+.carrito a{
+    display: inline-block;
+}
+
 .carrito img{
     width: 30px;
+    height: auto;
+    cursor: pointer;
 }
+
 .imagen_principal{
      width: 100%;
     height: 500px;
