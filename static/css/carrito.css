@@ -1,0 +1,60 @@
+body{
+    font-family: Arial;
+    background: #f5f5f5;
+    margin: 0;
+}
+
+header{
+    background: #111;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.contenedor{
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.producto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.producto img{
+    width: 80px;
+}
+
+.info{
+    flex: 1;
+    margin-left: 15px;
+}
+
+.cantidad button{
+    padding: 5px 10px;
+}
+
+.eliminar{
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px;
+}
+
+.total{
+    background: white;
+    padding: 15px;
+    text-align: right;
+}
+
+.pagar{
+    background: green;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+}
