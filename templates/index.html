@@ -50,39 +50,22 @@
             </div>
         </div>
     </section>
-    <section>
-        <h2 class="productos_destacados">Productos Destacados</h2>
+   <section>
+    <h2 class="productos_destacados">Productos Destacados</h2>
+    
+    <div class="carousel-container">
+        <button class="btn prev">&#10094;</button>
 
-        <div class="contenedor_productos">
-            <div class="producto">
-                <h3>Producto 1</h3>
-                <img src="../static/imagenes/productos/producto_1.jpeg" alt="producto 1">
-                <p class="precio">$32.000</p>
-                <button>Agregar al Carrito</button>
-            </div>
-            <div class="producto">
-                <h3>Producto 1</h3>
-                <img src="../static/imagenes/productos/producto_1.jpeg" alt="producto 1">
-                <p class="precio">$32.000</p>
-                <button>Agregar al Carrito</button>
-            </div>
-            <div class="producto">
-                <h3>Producto 1</h3>
-                <img src="../static/imagenes/productos/producto_1.jpeg" alt="producto 1">
-                <p class="precio">$32.000</p>
-                <button>Agregar al Carrito</button>
-            </div>
-            <div class="producto">
-                <h3>Producto 1</h3>
-                <img src="../static/imagenes/productos/producto_1.jpeg" alt="producto 1">
-                <p class="precio">$32.000</p>
-                <button>Agregar al Carrito</button>
-            </div>
-        </div>
-        <div class="boton-todos">
-            <a href="productos.html">Todos los productos</a>
-        </div>
-    </section>
+        <div class="contenedor_productos" id="contenedor-productos"></div>
+
+        <button class="btn next">&#10095;</button>
+    </div>
+
+    <div class="boton-todos">
+        <a href="productos.html">Todos los productos</a>
+    </div>
+</section>
+
     <footer>
         <div class="logo_footer">
             <img src="../static/imagenes/index/Captura 1.PNG" alt="producto 1">
@@ -99,6 +82,17 @@
                     alt="tiktok"></a>
         </div>
     </footer>
-</body>
+    
+    <div class="contenedor_productos" id="contenedor-productos"></div>
 
+
+   <script src="../static/js/productos.js"></script>
+   <script src="../static/js/renderproductos.js"></script>
+   <script>
+    mostrarProductos("contenedor-productos");
+   </script>
+   <script src="../static/js/carrusel.js"></script>
+   
+</body>
+ 
 </html>
