@@ -49,7 +49,8 @@ header {
 
 .imagen_principal {
     width: 100%;
-    height: 500px;
+    height: auto;
+    max-height: 580px;
     overflow: hidden;
     position: relative;
 }
@@ -57,16 +58,18 @@ header {
 /* Imagen optimizada */
 .imagen_principal img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+    display: block;
+    transform: none;
+    transition: transform 0.3s ease;
+    image-rendering: auto;
 }
 
 /* Efecto sutil al pasar el mouse */
 .imagen_principal:hover img {
-    transform: scale(1.15);
+    transform: none;
 }
 
 /* Overlay suave para mejorar estética */
