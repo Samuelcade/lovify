@@ -2,7 +2,7 @@ body {
   font-family: "Delius", cursive;
   font-weight: 400;
   font-style: normal;
-  background-color: blanchedalmond;
+  background-color: whitesmoke;
   padding: 0;
   margin: 0;
 }
@@ -26,18 +26,25 @@ header {
     list-style: none;
     display: flex;
     gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-.carrito{
-    /* border: 5px dashed red; */
+.menu a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+}
+
+.carrito {
     padding: 10px;
 }
 
-.carrito a{
+.carrito a {
     display: inline-block;
 }
 
-.carrito img{
+.carrito img {
     width: 30px;
     height: auto;
     cursor: pointer;
@@ -57,7 +64,7 @@ header {
     border: 2px solid #ff69b4;
     border-radius: 10px;
     padding: 20px;
-    background-color: rgb(240, 228, 230);
+    background-color: rgb(236, 233, 227);
 }
 
 .form-textarea {
