@@ -199,8 +199,8 @@ body {
 .imagen-sobre img {
     width: 100%;
     max-width: 480px; 
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /* border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); */
     transition: transform 0.3s ease;
 }
 
