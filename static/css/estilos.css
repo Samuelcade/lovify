@@ -7,22 +7,73 @@ body {
     margin: 0;
 }
 
-header {
+/* HERO (HEADER + BANNER) */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+}
+
+/* CARRUSEL */
+.carousel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CAPA ENCIMA */
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+/* HEADER ENCIMA DEL BANNER */
+.topbar {
+    position: relative;
+    z-index: 5;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 8%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* LOGO */
 .logo img {
-    padding: 10px 10px;
+    padding: 10px;
     height: 50px;
 }
 
+/* MENU */
 .menu ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
     margin: 0;
     padding: 0;
 }
@@ -31,33 +82,78 @@ header {
     text-decoration: none;
     color: #222;
     font-weight: bold;
+    transition: 0.3s;
 }
 
+.menu a:hover {
+    color: #ff69b4;
+}
+
+/* CARRITO */
 .carrito {
     padding: 10px;
 }
 
-.carrito a {
-    display: inline-block;
-}
-
 .carrito img {
     width: 30px;
-    height: auto;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-.imagen_principal {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
-    object-fit: contain;
-    object-position: center center;
-    display: block;
-    transform: none;
-    transition: transform 0.3s ease;
-    image-rendering: auto;
+.carrito img:hover {
+    transform: scale(1.1);
+}
+
+/* BOTÓN EN EL CENTRO */
+.hero-boton {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.hero-boton a {
+    padding: 14px 30px;
+    background: #ff69b4;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.hero-boton a:hover {
+    background: #D81B60;
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero {
+        height: 400px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-boton {
+        top: 60%;
+    }
+
+    .hero-boton a {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
 }
 
 /* Efecto sutil al pasar el mouse */
