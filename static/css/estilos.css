@@ -7,7 +7,7 @@ body {
     margin: 0;
 }
 
-/* HERO (HEADER + BANNER) */
+
 .hero {
     position: relative;
     width: 100%;
@@ -15,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-/* CARRUSEL */
+
 .carousel {
     position: absolute;
     inset: 0;
@@ -43,7 +43,7 @@ body {
     object-fit: cover;
 }
 
-/* CAPA ENCIMA */
+
 .hero-overlay {
     position: relative;
     z-index: 2;
@@ -51,7 +51,7 @@ body {
     height: 100%;
 }
 
-/* HEADER ENCIMA DEL BANNER */
+
 .topbar {
     position: relative;
     z-index: 5;
@@ -63,13 +63,12 @@ body {
     box-sizing: border-box;
 }
 
-/* LOGO */
 .logo img {
     padding: 10px;
     height: 50px;
 }
 
-/* MENU */
+
 .menu ul {
     list-style: none;
     display: flex;
@@ -89,7 +88,7 @@ body {
     color: #ff69b4;
 }
 
-/* CARRITO */
+
 .carrito {
     padding: 10px;
 }
@@ -104,7 +103,7 @@ body {
     transform: scale(1.1);
 }
 
-/* BOTÓN EN EL CENTRO */
+
 .hero-boton {
     position: absolute;
     top: 55%;
@@ -130,7 +129,7 @@ body {
     transform: scale(1.05);
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 768px) {
     .hero {
         height: 400px;
