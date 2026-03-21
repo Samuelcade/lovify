@@ -2,6 +2,35 @@ function formatoPrecio(precio) {
     return "$" + precio.toLocaleString("es-CO");
 }
 
+function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+}
+
+function guardarCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function agregarAlCarrito(producto) {
+    let carrito = obtenerCarrito();
+
+    const productoExistente = carrito.find(item => item.id === producto.id);
+
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            imagen: producto.imagen,
+            precio: producto.precio,
+            cantidad: 1
+        });
+    }
+
+    guardarCarrito(carrito);
+    alert(producto.nombre + " fue agregado al carrito");
+}
+
 /* 🔹 PARA INDEX (carrusel simple) */
 function mostrarProductos(idContenedor) {
     const contenedor = document.getElementById(idContenedor);
@@ -15,10 +44,12 @@ function mostrarProductos(idContenedor) {
                 <h3>${producto.nombre}</h3>
                 <img src="${producto.imagen}" alt="${producto.nombre}">
                 <p class="precio">${formatoPrecio(producto.precio)}</p>
-                <button>Agregar al Carrito</button>
+                <button class="btn-agregar" data-id="${producto.id}">Agregar al Carrito</button>
             </div>
         `;
     });
+
+    activarBotonesCarrito();
 }
 
 /* 🔹 PARA PRODUCTOS.HTML (categorías) */
@@ -45,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3>${producto.nombre}</h3>
                     <img src="${producto.imagen}" alt="${producto.nombre}">
                     <p class="precio">${formatoPrecio(producto.precio)}</p>
-                    <button>Agregar al Carrito</button>
+                    <button class="btn-agregar" data-id="${producto.id}">Agregar al Carrito</button>
                 </div>
             `;
         });
@@ -58,4 +89,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         contenedor.innerHTML += html;
     });
+
+    activarBotonesCarrito();
 });
+
+function activarBotonesCarrito() {
+    const botones = document.querySelectorAll(".btn-agregar");
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const id = Number(boton.dataset.id);
+            const productoSeleccionado = productos.find(producto => producto.id === id);
+
+            if (productoSeleccionado) {
+                agregarAlCarrito(productoSeleccionado);
+            }
+        });
+    });
+}

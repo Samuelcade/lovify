@@ -25,31 +25,14 @@
     </header>
 
     <main class="contenedor">
-      <div class="producto">
-        <img
-          src="../static/imagenes/productos/producto_1.jpeg"
-          alt="producto"
-        />
-
-        <div class="info">
-          <h3>Producto 1</h3>
-          <p>$50.000</p>
-
-          <div class="cantidad">
-            <button onclick="restar()">-</button>
-            <span id="cantidad">1</span>
-            <button onclick="sumar()">+</button>
-          </div>
-        </div>
-
-        <button class="eliminar">Eliminar</button>
-      </div>
+      <div id="carrito-productos"></div>
 
       <div class="total">
-        <h2>Total: $<span id="total">50000</span></h2>
+        <h2>Total: <span id="total">$0</span></h2>
         <button class="pagar">Proceder al pago</button>
       </div>
     </main>
+
 
         <footer>
         <div class="logo_footer">
@@ -66,8 +49,7 @@
             <a href="https://www.tiktok.com/@lovify"><img src="../static/imagenes/index/logo_tiktok.png"
                     alt="tiktok"></a>
         </div>
-    </footer>
 
-    <script src="carrito.js"></script>
+    <script src="../static/js/carrito.js"></script>
   </body>
 </html>
