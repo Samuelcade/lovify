@@ -50,15 +50,8 @@ header {
 .imagen_principal {
     width: 100%;
     height: auto;
-    max-height: 580px;
     overflow: hidden;
     position: relative;
-}
-
-/* Imagen optimizada */
-.imagen_principal img {
-    width: 100%;
-    height: auto;
     object-fit: contain;
     object-position: center center;
     display: block;
@@ -68,7 +61,7 @@ header {
 }
 
 /* Efecto sutil al pasar el mouse */
-.imagen_principal:hover img {
+.imagen_principal:hover {
     transform: none;
 }
 
@@ -87,9 +80,6 @@ header {
 @media (max-width: 768px) {
     .imagen_principal {
         height: 300px;
-    }
-
-    .imagen_principal img {
         object-position: center 20%;
         transform: scale(1.2);
     }
