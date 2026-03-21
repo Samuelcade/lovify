@@ -1,108 +1,116 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const contenedor = document.querySelector(".contenedor_productos");
-    const btnPrev = document.querySelector(".prev");
-    const btnNext = document.querySelector(".next");
+    const carruseles = document.querySelectorAll(".carousel-container");
 
-    if (!contenedor || !btnPrev || !btnNext) return;
+    if (!carruseles.length) return;
 
-    let productos = Array.from(document.querySelectorAll(".producto"));
-    const cantidadOriginal = productos.length;
+    carruseles.forEach((carrusel) => {
+        const contenedor = carrusel.querySelector(".contenedor_productos");
+        const btnPrev = carrusel.querySelector(".prev");
+        const btnNext = carrusel.querySelector(".next");
 
-    if (cantidadOriginal === 0) return;
+        if (!contenedor || !btnPrev || !btnNext) return;
 
-    // Duplicar primeros y últimos para efecto infinito
-    const clonesInicio = productos.slice(0, 4).map(item => item.cloneNode(true));
-    const clonesFinal = productos.slice(-4).map(item => item.cloneNode(true));
+        let productos = Array.from(contenedor.querySelectorAll(".producto"));
+        const cantidadOriginal = productos.length;
 
-    clonesFinal.forEach(clon => {
-        contenedor.insertBefore(clon, contenedor.firstChild);
-    });
+        if (cantidadOriginal === 0) return;
 
-    clonesInicio.forEach(clon => {
-        contenedor.appendChild(clon);
-    });
+        // Cantidad de clones según cuántos productos haya
+        const clonesPorLado = Math.min(4, cantidadOriginal);
 
-    productos = Array.from(document.querySelectorAll(".producto"));
+        const clonesInicio = productos
+            .slice(0, clonesPorLado)
+            .map(item => item.cloneNode(true));
 
-    let index = 4;
-    let autoplay;
+        const clonesFinal = productos
+            .slice(-clonesPorLado)
+            .map(item => item.cloneNode(true));
 
-    function anchoProducto() {
-        const estiloContenedor = window.getComputedStyle(contenedor);
-        const gap = parseInt(estiloContenedor.gap) || 30;
-        return productos[0].offsetWidth + gap;
-    }
+        clonesFinal.forEach(clon => {
+            contenedor.insertBefore(clon, contenedor.firstChild);
+        });
 
-    function moverCarrusel(animar = true) {
-        if (animar) {
-            contenedor.style.transition = "transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1)";
-        } else {
-            contenedor.style.transition = "none";
+        clonesInicio.forEach(clon => {
+            contenedor.appendChild(clon);
+        });
+
+        productos = Array.from(contenedor.querySelectorAll(".producto"));
+
+        let index = clonesPorLado;
+        let autoplay;
+
+        function anchoProducto() {
+            const estiloContenedor = window.getComputedStyle(contenedor);
+            const gap = parseInt(estiloContenedor.gap) || 20;
+            return productos[0].offsetWidth + gap;
         }
 
-        contenedor.style.transform = `translateX(-${index * anchoProducto()}px)`;
-    }
+        function moverCarrusel(animar = true) {
+            if (animar) {
+                contenedor.style.transition = "transform 0.6s ease";
+            } else {
+                contenedor.style.transition = "none";
+            }
 
-    function siguiente() {
-        index++;
-        moverCarrusel(true);
-    }
-
-    function anterior() {
-        index--;
-        moverCarrusel(true);
-    }
-
-    contenedor.addEventListener("transitionend", function () {
-        // Si llegó al final clonado, volver al inicio real sin salto visible
-        if (index >= cantidadOriginal + 4) {
-            index = 4;
-            moverCarrusel(false);
+            contenedor.style.transform = `translateX(-${index * anchoProducto()}px)`;
         }
 
-        // Si llegó al inicio clonado, volver al final real sin salto visible
-        if (index <= 0) {
-            index = cantidadOriginal;
-            moverCarrusel(false);
+        function siguiente() {
+            index++;
+            moverCarrusel(true);
         }
-    });
 
-    btnNext.addEventListener("click", function () {
-        siguiente();
-        reiniciarAutoplay();
-    });
+        function anterior() {
+            index--;
+            moverCarrusel(true);
+        }
 
-    btnPrev.addEventListener("click", function () {
-        anterior();
-        reiniciarAutoplay();
-    });
+        contenedor.addEventListener("transitionend", function () {
+            if (index >= cantidadOriginal + clonesPorLado) {
+                index = clonesPorLado;
+                moverCarrusel(false);
+            }
 
-    function iniciarAutoplay() {
-        autoplay = setInterval(() => {
+            if (index < clonesPorLado) {
+                index = cantidadOriginal + clonesPorLado - 1;
+                moverCarrusel(false);
+            }
+        });
+
+        btnNext.addEventListener("click", function () {
             siguiente();
-        }, 3000);
-    }
+            reiniciarAutoplay();
+        });
 
-    function reiniciarAutoplay() {
-        clearInterval(autoplay);
-        iniciarAutoplay();
-    }
+        btnPrev.addEventListener("click", function () {
+            anterior();
+            reiniciarAutoplay();
+        });
 
-    const carrusel = document.querySelector(".carousel-container");
+        function iniciarAutoplay() {
+            autoplay = setInterval(() => {
+                siguiente();
+            }, 1800); // más rápido
+        }
 
-    carrusel.addEventListener("mouseenter", function () {
-        clearInterval(autoplay);
-    });
+        function reiniciarAutoplay() {
+            clearInterval(autoplay);
+            iniciarAutoplay();
+        }
 
-    carrusel.addEventListener("mouseleave", function () {
-        iniciarAutoplay();
-    });
+        carrusel.addEventListener("mouseenter", function () {
+            clearInterval(autoplay);
+        });
 
-    window.addEventListener("resize", function () {
+        carrusel.addEventListener("mouseleave", function () {
+            iniciarAutoplay();
+        });
+
+        window.addEventListener("resize", function () {
+            moverCarrusel(false);
+        });
+
         moverCarrusel(false);
+        iniciarAutoplay();
     });
-
-    // Posición inicial
-    moverCarrusel(false);
-    iniciarAutoplay();
 });
